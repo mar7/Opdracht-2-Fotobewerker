@@ -2,10 +2,10 @@
  * OptieScherm.cpp
  *
  *  Created on: 3 mrt. 2012
- *      Author: acer
+ *      Author: acer, Marijn
  */
 
-#include "OptieScherm.h"
+/*#include "OptieScherm.h"
 
 OptieScherm::OptieScherm( Screen* parent )
 {
@@ -81,5 +81,5 @@ void OptieScherm::pointerPressEvent(MAPoint2d point)
 
 	//behandel de editbox bij selecteren (touch), verander de editBox naar je eigen editbox(en)
 	}
-}
+}*/
 

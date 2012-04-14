@@ -2,7 +2,7 @@
  * FotoScherm.h
  *
  *  Created on: 3 mrt. 2012
- *      Author: acer
+ *      Author: acer, Marijn
  */
 
 #ifndef FOTOSCHERM_H_
@@ -24,7 +24,7 @@
 #include "MAHeaders.h"
 
 //fotoscherm bevat een optiescherm
-#include "OptieScherm.h"
+//#include "OptieScherm.h"
 
 
 
@@ -39,7 +39,7 @@ class FotoScherm : public Screen
 {
 private:
 	//bevat een optiescherm, een label voor achtergrondkleur, een label voor tekst en een image
-	OptieScherm* optieScherm;
+	//OptieScherm* optieScherm;
 	Label* achtergrondLabel;
 	Label* imageTekst;
 	Image* image;
