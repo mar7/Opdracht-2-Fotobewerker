@@ -5,7 +5,7 @@
  *      Author: acer, Marijn
  */
 
-/*#ifndef OPTIESCHERM_H_
+#ifndef OPTIESCHERM_H_
 #define OPTIESCHERM_H_
 
 
@@ -47,6 +47,6 @@ public:
 
 	int getAchtergrondOptie();
 	const BasicString<char>getImagetekst(); //geeft text van editbox terug
-};*/
+};
 
 #endif /* OPTIESCHERM_H_ */

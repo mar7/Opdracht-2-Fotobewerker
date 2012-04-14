@@ -39,7 +39,7 @@ class FotoScherm : public Screen
 {
 private:
 	//bevat een optiescherm, een label voor achtergrondkleur, een label voor tekst en een image
-	//OptieScherm* optieScherm;
+	OptieScherm* optieScherm;
 	Label* achtergrondLabel;
 	Label* imageTekst;
 	Image* image;

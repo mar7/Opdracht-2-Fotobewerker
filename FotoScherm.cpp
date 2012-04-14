@@ -14,8 +14,7 @@ int screenHeight;
 FotoScherm::FotoScherm()
 {
 	//het optiescherm
-	//this->optieScherm = new OptieScherm( this );
-
+	this->optieScherm = new OptieScherm( this );
 
 	//bepaal grootte van het scherm
 	MAExtent screenSize = maGetScrSize();
@@ -57,10 +56,10 @@ void FotoScherm::show()
 	this->Screen::show();
 
 	//haal informatie achtergrondkleur op van optiescherm
-	//this->achtergrondLabel->setBackgroundColor( this->optieScherm->getAchtergrondOptie() );
+	this->achtergrondLabel->setBackgroundColor( this->optieScherm->getAchtergrondOptie() );
 
 	//haal informatie imagetekst op van optiescherm
-	//this->imageTekst->setCaption( this->optieScherm->getImagetekst() );
+	this->imageTekst->setCaption( this->optieScherm->getImagetekst() );
 }
 
 
