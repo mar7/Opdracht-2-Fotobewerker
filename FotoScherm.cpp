@@ -33,10 +33,12 @@ FotoScherm::FotoScherm()
 	this->image = new Image( (screenWidth / 2) - (176 / 2), (screenHeight / 2) - (153 / 2), 176, 153, achtergrondLabel, false, false, RES_IMAGE );
 
 	//maak tekst bij het plaatje met een label
-	this->imageTekst = new Label( (screenWidth / 2) - (176 / 2), (screenHeight / 2) + (153 / 2) + 5, 176, 30, achtergrondLabel, " Oude spoorlijn ", 0, font );
+	this->imageTekst = new Label( (screenWidth / 2) - (176 / 2), (screenHeight / 2) + (153 / 2) + 5, 176, 30, achtergrondLabel, "Oude spoorlijn ", 0, font );
+	this->imageTekst->setPaddingLeft(2);
+	this->imageTekst->setPaddingTop(2);
+	this->imageTekst->setPaddingRight(2);
+	this->imageTekst->setPaddingBottom(2);
 	this->imageTekst->setSkin(skin);
-
-
 
 	//stel dit scherm in als het main scherm, met achtergrondlabel als de basis widget
 	this->setMain( this->achtergrondLabel );
@@ -68,11 +70,16 @@ void FotoScherm::show()
 void FotoScherm::keyPressEvent(int keyCode, int nativeCode)
 {
 	//bij indrukken van de MAK_FIRE toets, laat optiescherm zien
+	if (keyCode == MAK_FIRE)
+	{
+		optieScherm->show();
+	}
 }
 
 void FotoScherm::pointerPressEvent(MAPoint2d point)
 {
 	//bij touch, laat optiescherm zien
+	optieScherm->show();
 }
 
 

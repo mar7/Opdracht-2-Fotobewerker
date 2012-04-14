@@ -12,7 +12,6 @@
 FotoBewerker::FotoBewerker()
 {
 	this->fotoScherm = new FotoScherm();
-	//this->showFotoScherm();
 	this->fotoScherm->show();
 }
 

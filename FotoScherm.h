@@ -24,7 +24,7 @@
 #include "MAHeaders.h"
 
 //fotoscherm bevat een optiescherm
-//#include "OptieScherm.h"
+#include "OptieScherm.h"
 
 
 
