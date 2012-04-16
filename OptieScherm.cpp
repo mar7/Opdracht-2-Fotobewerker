@@ -34,46 +34,57 @@ OptieScherm::OptieScherm( Screen* parent )
 	// standaard widget label maken
 	this->setMain(label);
 
+	// listBox voor de opties maken
+	this->listBox = new ListBox(0, 0, schermBreedte, schermHoogte, label, ListBox::LBO_VERTICAL, ListBox::LBA_LINEAR, true);
+	listBox->setPaddingTop(10);
+	listBox->setPaddingLeft(listBox->getWidth() / 2 - 60);
+	listBox->setBackgroundColor(0xffffff);
+
 	//maak rode knop
-	this->roodLabel = new Label( 30, 30, 55, 30, label, "Rood", 0, font );
+	this->roodLabel = new Label( 30, 30, 55, 30, NULL, "Rood", 0, font );
 	roodLabel->setSkin( skin );
 	roodLabel->setPaddingTop(5);
 	roodLabel->setPaddingLeft(10);
 	this->kleurLabels.add( roodLabel );	//voeg toe aan vector
+	listBox->add(roodLabel);
 
 	//maak groene knop
-	this->groenLabel = new Label( 30, 70, 55, 30, label, "Groen", 0, font );
+	this->groenLabel = new Label( 30, 70, 55, 30, NULL, "Groen", 0, font );
 	groenLabel->setSkin( skin );
 	groenLabel->setPaddingTop(5);
 	groenLabel->setPaddingLeft(10);
 	this->kleurLabels.add( groenLabel );	//voeg toe aan vector
+	listBox->add(groenLabel);
 
 	//maak blauwe knop
-	this->blauwLabel = new Label( 30, 110, 55, 30, label, "Blauw", 0, font );
+	this->blauwLabel = new Label( 30, 110, 55, 30, NULL, "Blauw", 0, font );
 	blauwLabel->setSkin( skin );
 	blauwLabel->setPaddingTop(5);
 	blauwLabel->setPaddingLeft(10);
 	this->kleurLabels.add( blauwLabel );	//voeg toe aan vector
-
-	// maak toepassen knop
-	this->knopLabel = new Label( 30, 250, 85, 30, label, "Toepassen", 0, font);
-	knopLabel->setPaddingTop(5);
-	knopLabel->setPaddingLeft(10);
-	knopLabel->setSkin(skin);
-
+	listBox->add(blauwLabel);
 
 	//stel grootte plaatje in m.b.v. editbox
-	this->plaatjeGrootte = new EditBox(30, 150, 45, 30, label, "176", 0x000000, font, true, false, 30, EditBox::IM_NUMBERS);
+	this->plaatjeGrootte = new EditBox(30, 150, 45, 30, NULL, "176", 0x000000, font, true, false, 30, EditBox::IM_NUMBERS);
 	plaatjeGrootte->setPaddingTop(5);
 	plaatjeGrootte->setPaddingLeft(10);
 	this->plaatjeGrootte->setSkin( skin );
+	listBox->add(plaatjeGrootte);
 
 
 	//stel naam plaatje in m.b.v. editbox
-	this->plaatjeNaam = new EditBox(30, 190, 150, 30, label, "Onderwater spoorlijn ", 0x000000, font, true, false, 3, EditBox::IM_STANDARD);
+	this->plaatjeNaam = new EditBox(30, 190, 150, 30, NULL, "Onderwater spoorlijn ", 0x000000, font, true, false, 3, EditBox::IM_STANDARD);
 	plaatjeNaam->setPaddingTop(5);
 	plaatjeNaam->setPaddingLeft(10);
 	this->plaatjeNaam->setSkin( skin );
+	listBox->add(plaatjeNaam);
+
+	// maak toepassen knop
+	this->knopLabel = new Label( 30, 250, 85, 30, NULL, "Toepassen", 0, font);
+	knopLabel->setPaddingTop(5);
+	knopLabel->setPaddingLeft(10);
+	knopLabel->setSkin(skin);
+	listBox->add(knopLabel);
 }
 
 OptieScherm::~OptieScherm()
@@ -110,6 +121,61 @@ void OptieScherm::keyPressEvent(int keyCode, int nativeCode)
 	{
 		parent->show();
 	}
+
+
+	if(keyCode == MAK_DOWN) // naar beneden navigeren, kijken wat is ingedrukt en label eronder veranderen
+	{
+		if (roodLabel->isSelected())
+		{
+			roodLabel->setSelected(false);
+			groenLabel->setSelected(true);
+			achtergrondKleur = 0x00ff00;
+		}
+		else if (groenLabel->isSelected())
+		{
+			groenLabel->setSelected(false);
+			blauwLabel->setSelected(true);
+			achtergrondKleur = 0x0000ff;
+		}
+		else if (blauwLabel->isSelected())
+		{
+			blauwLabel->setSelected(false);
+			plaatjeGrootte->setSelected(true);
+		}
+		else if (plaatjeGrootte->isSelected())
+		{
+			plaatjeGrootte->setSelected(false);
+			plaatjeNaam->setSelected(true);
+		}
+	}
+
+	if(keyCode == MAK_UP) // naar boven navigeren, kijken wat is ingedrukt en label erboven veranderen
+	{
+		if (groenLabel->isSelected())
+		{
+			groenLabel->setSelected(false);
+			roodLabel->setSelected(true);
+			achtergrondKleur = 0xff0000;
+		}
+		else if (blauwLabel->isSelected())
+		{
+			blauwLabel->setSelected(false);
+			groenLabel->setSelected(true);
+			achtergrondKleur = 0x00ff00;
+		}
+		else if (plaatjeGrootte->isSelected())
+		{
+			plaatjeGrootte->setSelected(false);
+			blauwLabel->setSelected(true);
+			achtergrondKleur = 0x0000ff;
+		}
+		else if (plaatjeNaam->isSelected())
+		{
+			plaatjeNaam->setSelected(false);
+			plaatjeGrootte->setSelected(true);
+		}
+	}
+
 }
 
 // afvangen aanraking

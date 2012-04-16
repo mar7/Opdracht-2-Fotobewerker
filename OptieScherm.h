@@ -41,6 +41,9 @@ private:
 	int grootte;
 	int achtergrondKleur;
 
+	// listBox voor de opties
+	ListBox* listBox;
+
 public:
 	OptieScherm( Screen* parent );
 	virtual ~OptieScherm();
